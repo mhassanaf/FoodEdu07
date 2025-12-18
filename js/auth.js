@@ -610,10 +610,18 @@
 
       const toggleDropdown = (e) => {
         e.preventDefault();
-        dropdown.classList.toggle('show');
+        // Remove !important enforcement when toggling
+        if (dropdown.style.display === 'none') {
+          dropdown.style.display = 'block';
+          dropdown.classList.add('show');
+        } else {
+          dropdown.style.display = 'none';
+          dropdown.classList.remove('show');
+        }
       };
 
       const closeDropdown = () => {
+        dropdown.style.display = 'none';
         dropdown.classList.remove('show');
       };
 
