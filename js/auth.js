@@ -306,14 +306,38 @@
         }
 
         // Collect form data and transform field names to match backend expectations
+        const termsChecked = this.querySelector('[name="terms"]')?.checked || false;
+
         const formDataObj = {
           name: this.querySelector('[name="su_name"]')?.value || '',
           email: this.querySelector('[name="su_email"]')?.value || '',
           phone: this.querySelector('[name="su_phone"]')?.value || '',
           role: this.querySelector('[name="role"]:checked')?.value || '',
           username: this.querySelector('[name="username"]')?.value || '',
-          password: this.querySelector('[name="password"]')?.value || ''
+          password: this.querySelector('[name="password"]')?.value || '',
+          terms: termsChecked
         };
+
+        // --- Client Side Validation Start ---
+        if (!termsChecked) {
+          showResult(false, 'Validasi Gagal', 'Anda wajib menyetujui Syarat & Ketentuan.', 'signup');
+          if (submitBtn) { submitBtn.classList.remove('loading'); submitBtn.disabled = false; }
+          return;
+        }
+
+        const phoneRegex = /^[0-9]{10,13}$/;
+        if (!phoneRegex.test(formDataObj.phone)) {
+          showResult(false, 'Validasi Gagal', 'Nomor HP harus berupa angka 10-13 digit.', 'signup');
+          if (submitBtn) { submitBtn.classList.remove('loading'); submitBtn.disabled = false; }
+          return;
+        }
+
+        if (formDataObj.password.length < 6) {
+          showResult(false, 'Validasi Gagal', 'Password minimal 6 karakter.', 'signup');
+          if (submitBtn) { submitBtn.classList.remove('loading'); submitBtn.disabled = false; }
+          return;
+        }
+        // --- Client Side Validation End ---
 
         // Add optional fields if they exist
         const sekolah = this.querySelector('[name="sekolah"]')?.value;
@@ -576,6 +600,29 @@
         if (first) first.focus();
       }, 220);
     }
+    // ===== TERMS DROPDOWN HANDLING =====
+    function initTermsDropdown() {
+      const trigger = el('triggerTerms');
+      const dropdown = el('termsDropdown');
+      const closeBtn = el('closeTermsDropdown');
+
+      if (!trigger || !dropdown) return;
+
+      const toggleDropdown = (e) => {
+        e.preventDefault();
+        dropdown.classList.toggle('show');
+      };
+
+      const closeDropdown = () => {
+        dropdown.classList.remove('show');
+      };
+
+      trigger.addEventListener('click', toggleDropdown);
+      if (closeBtn) closeBtn.addEventListener('click', closeDropdown);
+    }
+
+    // Call inside initAuth
+    initTermsDropdown();
   }
 
   // ===== INITIALIZE ON DOM READY =====
@@ -591,20 +638,21 @@
   // ===== PASSWORD TOGGLE FUNCTIONALITY =====
   function initPasswordToggleAfter() {
     const toggleButtons = document.querySelectorAll('.password-toggle');
-    
+
     toggleButtons.forEach(btn => {
       // Remove old listeners first
+      // ... (rest of password toggle preserved)
       const newBtn = btn.cloneNode(true);
       btn.parentNode.replaceChild(newBtn, btn);
-      
+
       // Add new listener
-      newBtn.addEventListener('click', function(e) {
+      newBtn.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        
+
         const targetId = this.getAttribute('data-target');
         const inputField = document.getElementById(targetId);
-        
+
         if (inputField) {
           const isPassword = inputField.type === 'password';
           inputField.type = isPassword ? 'text' : 'password';
