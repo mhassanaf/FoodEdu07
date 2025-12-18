@@ -606,19 +606,29 @@
       const dropdown = el('termsDropdown');
       const closeBtn = el('closeTermsDropdown');
 
-      if (!trigger || !dropdown) return;
+      console.log('Init Terms Dropdown:', { trigger, dropdown, closeBtn });
+
+      if (!trigger || !dropdown) {
+        console.error('Terms dropdown elements not found!');
+        return;
+      }
 
       const toggleDropdown = (e) => {
         e.preventDefault();
+        console.log('Toggle dropdown, current classes:', dropdown.className);
         dropdown.classList.toggle('show');
+        console.log('After toggle, classes:', dropdown.className);
       };
 
       const closeDropdown = () => {
+        console.log('Close dropdown');
         dropdown.classList.remove('show');
       };
 
       trigger.addEventListener('click', toggleDropdown);
       if (closeBtn) closeBtn.addEventListener('click', closeDropdown);
+
+      console.log('Terms dropdown initialized successfully');
     }
 
     // Call inside initAuth
