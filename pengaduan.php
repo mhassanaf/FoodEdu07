@@ -137,6 +137,9 @@ if ($isMBG) {
             align-items: center;
             gap: 6px;
             transition: transform 0.2s;
+            position: relative;
+            /* Ensure it stays above card overlay */
+            z-index: 10;
         }
 
         .admin-review-attachment:active {
