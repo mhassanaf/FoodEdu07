@@ -1,5 +1,5 @@
 /* =========================================================
-    FOODEDU AUTH - MODERN AESTHETIC DESIGN v3
+    FOODEDU AUTH - MODERN AESTHETIC DESIGN v4
     Premium, smooth, beautiful authentication experience
     Enhanced with glassmorphism, smooth animations, and modern UI
 ========================================================= */
@@ -109,6 +109,9 @@ body::before {
   }
 }
 
+/* =========================================================
+    CONTAINER STYLES
+========================================================= */
 .container {
   max-width: 480px;
   width: 100%;
@@ -117,6 +120,15 @@ body::before {
   z-index: 1;
   margin: 0 auto;
   /* Ensure horizontal centering */
+}
+
+/* Specific fix for auth page container */
+.auth-container {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 /* =========================================================
@@ -717,7 +729,7 @@ button>* {
 .auth-radio-group {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* 2 Columns for neater layout */
+  /* 2 Columns grid */
   gap: 12px;
   margin-top: 12px;
 }
@@ -801,7 +813,6 @@ button>* {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  /* Match form group spacing */
   margin-bottom: 24px;
 }
 
@@ -809,10 +820,9 @@ button>* {
   opacity: 0;
   animation: fadeInUp 0.5s var(--ease-smooth) forwards;
   margin-bottom: 0;
-  /* Handled by parent gap */
 }
 
-/* Stagger extra fields animations */
+/* Stagger animations for extra fields */
 .auth-extra-fields .auth-form-group:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -825,9 +835,8 @@ button>* {
   animation-delay: 0.3s;
 }
 
-
 /* =========================================================
-    FORM STYLES - Enhanced Input Fields
+    FORM STYLES - Shared Helpers
 ========================================================= */
 .form-header {
   margin-bottom: 32px;
@@ -852,89 +861,6 @@ button>* {
   font-weight: 500;
 }
 
-.form-group {
-  margin-bottom: 24px;
-  text-align: left;
-  animation: fadeInUp 0.5s var(--ease-smooth) forwards;
-  opacity: 0;
-}
-
-.form-group:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.form-group:nth-child(2) {
-  animation-delay: 0.15s;
-}
-
-.form-group:nth-child(3) {
-  animation-delay: 0.2s;
-}
-
-.form-group:nth-child(4) {
-  animation-delay: 0.25s;
-}
-
-.form-group:nth-child(5) {
-  animation-delay: 0.3s;
-}
-
-.form-group:nth-child(6) {
-  animation-delay: 0.35s;
-}
-
-.form-group:nth-child(7) {
-  animation-delay: 0.4s;
-}
-
-.form-group:nth-child(8) {
-  animation-delay: 0.45s;
-}
-
-.form-group label {
-  display: block;
-  color: var(--primary-dark);
-  font-weight: 600;
-  margin-bottom: 10px;
-  font-size: 14px;
-  transition: all var(--transition-smooth);
-  letter-spacing: 0.3px;
-}
-
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 16px 18px;
-  border: 2px solid rgba(39, 174, 96, 0.15);
-  border-radius: 16px;
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  transition: all var(--transition-smooth);
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  color: #333;
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-.form-group input:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow:
-    0 0 0 4px rgba(39, 174, 96, 0.15),
-    0 4px 12px rgba(39, 174, 96, 0.2),
-    inset 0 2px 4px rgba(39, 174, 96, 0.05);
-  background: rgba(255, 255, 255, 1);
-  transform: translateY(-2px);
-}
-
-.form-group input::placeholder {
-  color: #bbb;
-  font-weight: 400;
-}
-
 .required {
   color: var(--accent);
   font-weight: 700;
@@ -942,94 +868,242 @@ button>* {
 }
 
 /* =========================================================
-    RADIO BUTTONS STYLING - Modern Card Style
+    CHECKBOX STYLES (Terms & Conditions) - GLOBAL
 ========================================================= */
-.role-options {
-  display: grid;
-  gap: 12px;
-  margin-top: 12px;
+.terms-checkbox-group {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.5s var(--ease-smooth) forwards;
+  opacity: 0;
+  animation-delay: 0.5s;
 }
 
-.role-options label {
+.terms-layout {
   display: flex;
-  gap: 14px;
   align-items: center;
+  flex-wrap: nowrap;
+  /* Prevent wrapping */
+  gap: 8px;
+  /* Consistent gap */
+  font-size: 14px;
+  color: var(--neutral-600);
+  justify-content: flex-start;
+  /* Ensure left alignment */
+}
+
+.checkbox-container-simple {
+  display: inline-flex;
+  /* Fix for left alignment */
+  align-items: center;
+  position: relative;
   cursor: pointer;
-  padding: 16px 18px;
-  border: 2px solid rgba(39, 174, 96, 0.15);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  transition: all var(--transition-smooth);
-  font-weight: 500;
-  font-size: 15px;
-  color: #333;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  user-select: none;
+  padding-left: 28px;
+  margin-right: 2px;
+  white-space: nowrap;
+  /* Prevent text wrap */
 }
 
-.role-options label:hover {
-  border-color: var(--primary);
-  background: rgba(39, 174, 96, 0.08);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.15);
+.checkbox-container-simple input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
 
-.role-options input[type="radio"]:checked+span {
-  color: var(--primary-dark);
-  font-weight: 700;
-}
-
-.role-options input[type="radio"]:checked~span,
-.role-options label:has(input[type="radio"]:checked) {
-  border-color: var(--primary);
-  background: rgba(39, 174, 96, 0.12);
-  box-shadow:
-    0 0 0 3px rgba(39, 174, 96, 0.1),
-    0 4px 12px rgba(39, 174, 96, 0.2);
-}
-
-.role-options input[type="radio"] {
-  width: 20px;
+.checkmark-simple {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   height: 20px;
+  width: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(39, 174, 96, 0.4);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.checkbox-container-simple:hover input~.checkmark-simple {
+  background-color: rgba(39, 174, 96, 0.1);
+  border-color: var(--primary);
+}
+
+.checkbox-container-simple input:checked~.checkmark-simple {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.checkmark-simple:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container-simple input:checked~.checkmark-simple:after {
+  display: block;
+}
+
+.checkbox-container-simple .checkmark-simple:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.terms-trigger-link {
+  color: var(--primary-dark);
+  text-decoration: none;
+  font-weight: 600;
   cursor: pointer;
-  accent-color: var(--primary);
+  transition: color 0.2s;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.terms-trigger-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  background: rgba(39, 174, 96, 0.1);
+}
+
+/* =========================================================
+    DROPDOWN STYLES (Terms & Conditions)
+========================================================= */
+.terms-dropdown {
+  margin-top: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid var(--primary);
+  border-radius: 16px;
+  overflow: hidden;
+  display: none;
+  /* DEFAULT HIDDEN */
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.15);
+  width: 100%;
+}
+
+.terms-dropdown.show {
+  display: block;
+  animation: dropdownSlide 0.3s ease-out;
+  margin-bottom: 16px;
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.terms-dropdown-header {
+  padding: 16px 20px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   flex-shrink: 0;
 }
 
-/* =========================================================
-    FORM ACTIONS
-========================================================= */
-.form-actions {
-  display: flex;
-  gap: 14px;
-  margin-top: 32px;
-  animation: fadeInUp 0.6s var(--ease-smooth) 0.5s both;
-}
-
-.form-actions button {
-  flex: 1;
-  padding: 16px 24px;
-  border-radius: 16px;
+.terms-dropdown-header h4 {
+  margin: 0;
+  font-size: 15px;
   font-weight: 700;
-  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.terms-close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 24px;
+  line-height: 1;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
   cursor: pointer;
-  transition: all var(--transition-bounce);
-  position: relative;
-  overflow: hidden;
-  letter-spacing: 0.8px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.terms-close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+.terms-dropdown-body {
+  padding: 20px;
+  max-height: 350px;
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--neutral-700);
+  text-align: left;
+}
+
+.terms-dropdown-body p {
+  margin-bottom: 12px;
+}
+
+.terms-dropdown-body .terms-footer-note {
+  margin-top: 14px;
+  padding: 12px;
+  background: var(--neutral-50);
+  border-radius: 8px;
+  font-size: 12px;
+  border-left: 3px solid var(--accent);
+  line-height: 1.5;
+}
+
+/* Scrollbar for dropdown */
+.terms-dropdown-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terms-dropdown-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terms-dropdown-body::-webkit-scrollbar-thumb {
+  background-color: rgba(39, 174, 96, 0.3);
+  border-radius: 3px;
+}
+
+.terms-dropdown-body::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(39, 174, 96, 0.5);
+}
+
+/* Desktop responsive for Dropdown */
+@media (min-width: 768px) {
+  .terms-dropdown-body {
+    max-height: 400px;
+    font-size: 14px;
+  }
+
+  .terms-dropdown-header h4 {
+    font-size: 16px;
+  }
+
+  .terms-dropdown-body .terms-footer-note {
+    font-size: 13px;
+  }
 }
 
 /* =========================================================
-    EXTRA FIELDS (Dynamic)
-========================================================= */
-#extraFields {
-  animation: fadeInUp 0.5s var(--ease-smooth) forwards;
-}
-
-/* =========================================================
-    SIGNUP SUCCESS TOAST ("Sukses")
-   - Drop kecil yang turun dari atas form signup
-   - Smooth, modern, aesthetic
+    TOAST & MODAL STYLES
 ========================================================= */
 .auth-toast {
   position: relative;
@@ -1103,9 +1177,7 @@ button>* {
   white-space: nowrap;
 }
 
-/* =========================================================
-    RESULT MODAL STYLES - Enhanced Glassmorphism
-========================================================= */
+/* Modal */
 #welcomePanel {
   position: fixed;
   top: 0;
@@ -1162,7 +1234,6 @@ button>* {
   overflow: hidden;
 }
 
-/* Fresh entrance animation is applied via JS class so it can restart every time */
 .result-card.animate-in {
   animation: modalEnterModern 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
@@ -1259,12 +1330,12 @@ button>* {
   0% {
     transform: scale(0) rotateZ(-180deg);
     opacity: 0;
-    filter: blur(10px) drop-shadow(0 0 0 rgba(39, 174, 96, 0));
+    filter: blur(10px);
   }
 
   40% {
     transform: scale(1.3) rotateZ(20deg);
-    filter: blur(2px) drop-shadow(0 8px 20px rgba(39, 174, 96, 0.3));
+    filter: blur(2px);
   }
 
   60% {
@@ -1278,7 +1349,7 @@ button>* {
   100% {
     transform: scale(1) rotateZ(0deg);
     opacity: 1;
-    filter: blur(0px) drop-shadow(0 12px 30px rgba(39, 174, 96, 0.4));
+    filter: blur(0px);
   }
 }
 
@@ -1350,18 +1421,14 @@ button>* {
 
 .result-card .close-btn:hover {
   background: rgba(0, 0, 0, 0.08);
-  color: #222;
+  font-weight: bold;
   transform: rotate(90deg) scale(1.1);
 }
 
-/* Success vs Error visual states for the modal */
 .result-success #resultCard,
 .result-card.is-success {
   border-color: rgba(39, 174, 96, 0.35);
-  box-shadow:
-    0 40px 90px rgba(39, 174, 96, 0.25),
-    0 0 0 1px rgba(255, 255, 255, 0.7) inset,
-    0 0 80px rgba(39, 174, 96, 0.35);
+  box-shadow: 0 40px 90px rgba(39, 174, 96, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.7) inset;
 }
 
 .result-card.is-success::before {
@@ -1371,10 +1438,7 @@ button>* {
 .result-fail #resultCard,
 .result-card.is-error {
   border-color: rgba(231, 76, 60, 0.4);
-  box-shadow:
-    0 40px 90px rgba(231, 76, 60, 0.25),
-    0 0 0 1px rgba(255, 255, 255, 0.7) inset,
-    0 0 70px rgba(231, 76, 60, 0.25);
+  box-shadow: 0 40px 90px rgba(231, 76, 60, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.7) inset;
 }
 
 .result-card.is-error::before {
@@ -1389,7 +1453,7 @@ button>* {
   color: var(--danger);
 }
 
-/* Auto-dismiss progress bar */
+/* Auto Dismiss Bar */
 .auto-dismiss-bar {
   height: 6px;
   background: rgba(0, 0, 0, 0.08);
@@ -1408,10 +1472,7 @@ button>* {
   background-size: 200% 100%;
   border-radius: 8px;
   transition: width linear;
-  box-shadow:
-    0 0 15px rgba(255, 159, 28, 0.6),
-    0 0 30px rgba(255, 159, 28, 0.3),
-    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(255, 159, 28, 0.6);
   animation: shimmer 2s linear infinite;
   position: relative;
   overflow: hidden;
@@ -1452,7 +1513,7 @@ button>* {
   display: none !important;
 }
 
-/* Confetti animation - Modern & Smooth */
+/* Confetti */
 .confetti {
   position: absolute;
   width: 100%;
@@ -1475,40 +1536,78 @@ button>* {
 .confetti .piece {
   position: absolute;
   opacity: 0;
-  animation: confettiFallModern 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: confettiFallModern 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes confettiFallModern {
   0% {
     opacity: 1;
-    transform: translateY(-20px) translateX(0) rotateZ(0deg) scale(0.6);
-    filter: blur(0px);
+    transform: translateY(-20px) scale(0.6);
   }
 
   20% {
     opacity: 1;
-    transform: translateY(50px) translateX(10px) rotateZ(180deg) scale(1);
-    filter: blur(0px);
-  }
-
-  50% {
-    opacity: 0.8;
-    transform: translateY(150px) translateX(-15px) rotateZ(360deg) scale(1.1);
-    filter: blur(1px);
-  }
-
-  80% {
-    opacity: 0.4;
-    transform: translateY(280px) translateX(20px) rotateZ(540deg) scale(0.9);
-    filter: blur(2px);
+    transform: translateY(50px) rotateZ(180deg) scale(1);
   }
 
   100% {
     opacity: 0;
-    transform: translateY(400px) translateX(-10px) rotateZ(720deg) scale(0.5);
-    filter: blur(3px);
+    transform: translateY(400px) rotateZ(720deg) scale(0.5);
+  }
+}
+
+/* Back Button */
+.back-home-btn {
+  position: fixed;
+  top: 32px;
+  left: 32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 99px;
+  text-decoration: none;
+  color: var(--neutral-600);
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s;
+  z-index: 100;
+}
+
+.back-home-btn:hover {
+  transform: translateY(-2px);
+  color: var(--primary-dark);
+  box-shadow: 0 8px 24px rgba(39, 174, 96, 0.15);
+}
+
+/* Loaders */
+button.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+button.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -1551,25 +1650,16 @@ button>* {
     right: 12px;
   }
 
-  .btn-primary .btn-icon {
-    width: 22px;
-    height: 22px;
-    margin-right: 8px;
-  }
-
-  #resultCard .auth-logo {
+  .auth-logo {
     width: 80px;
     height: 80px;
   }
 
-  #resultCard {
-    padding: 36px 28px;
-  }
-
-  .form-group input,
-  .form-group select {
-    padding: 14px 16px;
-    font-size: 16px;
+  .back-home-btn {
+    top: 20px;
+    left: 20px;
+    padding: 10px 16px;
+    font-size: 13px;
   }
 }
 
@@ -1599,429 +1689,3 @@ button>* {
     font-size: 14px;
   }
 }
-
-/* Loading state for buttons */
-button.loading {
-  pointer-events: none;
-  opacity: 0.7;
-}
-
-button.loading::after {
-  content: '';
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  top: 50%;
-  left: 50%;
-  margin-left: -8px;
-  margin-top: -8px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: white;
-  border-radius: 50%;
-  animation: spin 0.6s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* =========================================================
-    BACK TO HOME BUTTON - FIXED & MODERN
-========================================================= */
-.back-home-btn {
-  position: fixed;
-  top: 32px;
-  left: 32px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 99px;
-  text-decoration: none;
-  color: var(--neutral-600);
-  font-weight: 600;
-  font-size: 14px;
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.03),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: 100;
-  overflow: hidden;
-}
-
-.back-home-btn span {
-  position: relative;
-  z-index: 1;
-}
-
-.back-home-btn svg {
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  z-index: 1;
-}
-
-.back-home-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 0;
-}
-
-.back-home-btn:hover {
-  transform: translateY(-2px);
-  color: var(--primary-dark);
-  border-color: rgba(39, 174, 96, 0.2);
-  box-shadow:
-    0 8px 24px rgba(39, 174, 96, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-.back-home-btn:hover::before {
-  opacity: 1;
-}
-
-.back-home-btn:hover svg {
-  transform: translateX(-4px);
-}
-
-.back-home-btn:active {
-  transform: translateY(0) scale(0.96);
-  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.1);
-}
-
-@media (max-width: 600px) {
-  .back-home-btn {
-    top: 20px;
-    left: 20px;
-    padding: 10px 16px;
-    font-size: 13px;
-  }
-
-  /* =========================================================
-    CHECKBOX STYLES (Terms & Conditions)
-========================================================= */
-  .terms-checkbox-group {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    animation: fadeInUp 0.5s var(--ease-smooth) forwards;
-    opacity: 0;
-    animation-delay: 0.5s;
-  }
-
-  .terms-layout {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 5px;
-    font-size: 14px;
-    color: var(--neutral-600);
-  }
-
-  .checkbox-container-simple {
-    display: flex;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-    padding-left: 28px;
-    /* Space for checkmark */
-    margin-right: 2px;
-  }
-
-  .checkbox-container-simple input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-
-  .checkmark-simple {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 20px;
-    width: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 2px solid rgba(39, 174, 96, 0.4);
-    border-radius: 6px;
-    transition: all 0.2s ease;
-  }
-
-  .checkbox-container-simple:hover input~.checkmark-simple {
-    background-color: rgba(39, 174, 96, 0.1);
-    border-color: var(--primary);
-  }
-
-  .checkbox-container-simple input:checked~.checkmark-simple {
-    background-color: var(--primary);
-    border-color: var(--primary);
-  }
-
-  .checkmark-simple:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-
-  .checkbox-container-simple input:checked~.checkmark-simple:after {
-    display: block;
-  }
-
-  .checkbox-container-simple .checkmark-simple:after {
-    left: 6px;
-    top: 2px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-  }
-
-  .terms-trigger-link {
-    color: var(--primary-dark);
-    text-decoration: none;
-    font-weight: 600;
-    cursor: pointer;
-    transition: color 0.2s;
-    padding: 2px 4px;
-    border-radius: 4px;
-  }
-
-  .terms-trigger-link:hover {
-    color: var(--accent);
-    text-decoration: underline;
-    background: rgba(39, 174, 96, 0.1);
-  }
-
-  .terms-checkbox-group {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    animation: fadeInUp 0.5s var(--ease-smooth) forwards;
-    opacity: 0;
-    animation-delay: 0.5s;
-  }
-
-  .terms-layout {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    /* Prevent wrapping which might cause stacking */
-    gap: 8px;
-    /* Slightly more gap */
-    font-size: 14px;
-    color: var(--neutral-600);
-    justify-content: flex-start;
-    /* Ensure left alignment */
-  }
-
-  .checkbox-container-simple {
-    display: inline-flex;
-    /* Use inline-flex */
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-    padding-left: 28px;
-    margin-right: 2px;
-    white-space: nowrap;
-    /* Keep text on one line */
-  }
-
-  .checkbox-container-simple input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-
-  .checkmark-simple {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 20px;
-    width: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 2px solid rgba(39, 174, 96, 0.4);
-    border-radius: 6px;
-    transition: all 0.2s ease;
-  }
-
-  .checkbox-container-simple:hover input~.checkmark-simple {
-    background-color: rgba(39, 174, 96, 0.1);
-    border-color: var(--primary);
-  }
-
-  .checkbox-container-simple input:checked~.checkmark-simple {
-    background-color: var(--primary);
-    border-color: var(--primary);
-  }
-
-  .checkmark-simple:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-
-  .checkbox-container-simple input:checked~.checkmark-simple:after {
-    display: block;
-  }
-
-  .checkbox-container-simple .checkmark-simple:after {
-    left: 6px;
-    top: 2px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-  }
-
-  /* =========================================================
-    DROPDOWN STYLES (Terms & Conditions)
-========================================================= */
-  .terms-dropdown {
-    margin-top: 16px;
-    background: rgba(255, 255, 255, 0.95);
-    border: 2px solid var(--primary);
-    border-radius: 16px;
-    overflow: hidden;
-    display: none;
-    /* DEFAULT HIDDEN */
-    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.15);
-    width: 100%;
-  }
-
-  .terms-dropdown.show {
-    display: block;
-    /* SHOW WHEN TOGGLED */
-    animation: dropdownSlide 0.3s ease-out;
-    margin-bottom: 16px;
-  }
-
-  @keyframes dropdownSlide {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .terms-dropdown-header {
-    padding: 16px 20px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-shrink: 0;
-  }
-
-  .terms-dropdown-header h4 {
-    margin: 0;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 1.3;
-  }
-
-  .terms-close-btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: white;
-    font-size: 24px;
-    line-height: 1;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    flex-shrink: 0;
-  }
-
-  .terms-close-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: rotate(90deg);
-  }
-
-  .terms-dropdown-body {
-    padding: 20px;
-    max-height: 350px;
-    overflow-y: auto;
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--neutral-700);
-    text-align: left;
-  }
-
-  .terms-dropdown-body p {
-    margin-bottom: 12px;
-  }
-
-  .terms-dropdown-body .terms-footer-note {
-    margin-top: 14px;
-    padding: 12px;
-    background: var(--neutral-50);
-    border-radius: 8px;
-    font-size: 12px;
-    border-left: 3px solid var(--accent);
-    line-height: 1.5;
-  }
-
-  /* Scrollbar for dropdown */
-  .terms-dropdown-body::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .terms-dropdown-body::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .terms-dropdown-body::-webkit-scrollbar-thumb {
-    background-color: rgba(39, 174, 96, 0.3);
-    border-radius: 3px;
-  }
-
-  .terms-dropdown-body::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(39, 174, 96, 0.5);
-  }
-
-  /* Desktop responsive */
-  @media (min-width: 768px) {
-    .terms-dropdown-body {
-      max-height: 400px;
-      font-size: 14px;
-    }
-
-    .terms-dropdown-header h4 {
-      font-size: 16px;
-    }
-
-    .terms-dropdown-body .terms-footer-note {
-      font-size: 13px;
-    }
-  }
-
-  .
