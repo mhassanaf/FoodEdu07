@@ -47,13 +47,19 @@ body {
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
   min-height: 100vh;
+  /* Use safe centering to prevent clipping on overflow */
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  padding: 20px;
+  /* Vertical center if space allows */
+  padding: 40px 20px;
+  /* More padding top/bottom */
   color: var(--neutral-700);
   line-height: 1.6;
   position: relative;
+  /* Ensure scroll is possible */
+  overflow-y: auto;
+  height: auto;
 }
 
 @keyframes gradientShift {
@@ -109,6 +115,8 @@ body::before {
   perspective: 1000px;
   position: relative;
   z-index: 1;
+  margin: 0 auto;
+  /* Ensure horizontal centering */
 }
 
 /* =========================================================
@@ -1974,3 +1982,5 @@ button.loading::after {
       font-size: 13px;
     }
   }
+
+  .
