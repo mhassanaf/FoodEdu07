@@ -1868,21 +1868,27 @@ button.loading::after {
       border: 2px solid var(--primary);
       border-radius: 16px;
       overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: none;
       box-shadow: 0 4px 12px rgba(39, 174, 96, 0.15);
       width: 100%;
     }
 
     .terms-dropdown.show {
-      max-height: 500px;
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
+      display: block;
+      animation: dropdownSlide 0.3s ease-out;
       margin-bottom: 16px;
+    }
+
+    @keyframes dropdownSlide {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .terms-dropdown-header {
