@@ -1784,20 +1784,27 @@ button.loading::after {
   .terms-layout {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 5px;
+    flex-wrap: nowrap;
+    /* Prevent wrapping which might cause stacking */
+    gap: 8px;
+    /* Slightly more gap */
     font-size: 14px;
     color: var(--neutral-600);
+    justify-content: flex-start;
+    /* Ensure left alignment */
   }
 
   .checkbox-container-simple {
-    display: flex;
+    display: inline-flex;
+    /* Use inline-flex */
     align-items: center;
     position: relative;
     cursor: pointer;
     user-select: none;
     padding-left: 28px;
     margin-right: 2px;
+    white-space: nowrap;
+    /* Keep text on one line */
   }
 
   .checkbox-container-simple input {
