@@ -329,7 +329,10 @@ h1 {
   margin-top: 32px;
 }
 
-button {
+/* =========================================================
+    BUTTON STYLES - Enhanced with Ripple Effect
+========================================================= */
+.auth-btn {
   border: none;
   border-radius: 18px;
   font-weight: 700;
@@ -342,9 +345,12 @@ button {
   overflow: hidden;
   font-family: "Poppins", sans-serif;
   z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-button::before {
+.auth-btn::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -358,17 +364,17 @@ button::before {
   z-index: 0;
 }
 
-button:active::before {
+.auth-btn:active::before {
   width: 300px;
   height: 300px;
 }
 
-button>* {
+.auth-btn>span {
   position: relative;
   z-index: 1;
 }
 
-.btn-primary {
+.auth-btn-primary {
   flex: 1;
   padding: 16px 28px;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
@@ -381,7 +387,7 @@ button>* {
   animation: btnSlideIn 0.6s var(--ease-bounce) 0.35s backwards;
 }
 
-.btn-primary:hover {
+.auth-btn-primary:hover {
   transform: translateY(-4px) scale(1.03);
   box-shadow:
     0 14px 40px rgba(255, 159, 28, 0.5),
@@ -389,33 +395,14 @@ button>* {
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
-.btn-primary:active {
+.auth-btn-primary:active {
   transform: translateY(-2px) scale(1.01);
   box-shadow:
     0 8px 24px rgba(255, 159, 28, 0.35),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.btn-primary.pressed {
-  transform: translateY(-4px) scale(0.98);
-}
-
-.btn-primary .btn-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  color: white;
-  transition: transform 0.2s var(--ease-spring);
-}
-
-.btn-primary.pressed .btn-icon {
-  transform: translateX(8px) scale(1.1);
-}
-
-.btn-secondary {
+.auth-btn-secondary {
   flex: 1;
   padding: 16px 28px;
   background: rgba(255, 255, 255, 0.9);
@@ -429,7 +416,7 @@ button>* {
   animation: btnSlideIn 0.6s var(--ease-bounce) 0.4s backwards;
 }
 
-.btn-secondary:hover {
+.auth-btn-secondary:hover {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: white;
   transform: translateY(-4px) scale(1.03);
@@ -440,7 +427,7 @@ button>* {
   border-color: var(--primary-dark);
 }
 
-.btn-secondary:active {
+.auth-btn-secondary:active {
   transform: translateY(-2px) scale(1.01);
   box-shadow: 0 8px 24px rgba(39, 174, 96, 0.25);
 }
@@ -955,14 +942,23 @@ button>* {
   transform: rotate(45deg);
 }
 
+/* Neutralize the text colors within the label */
+.terms-label-text,
+.terms-suffix-text {
+  color: var(--neutral-600);
+  font-weight: 500;
+  display: inline-block;
+}
+
 .terms-trigger-link {
-  color: var(--primary-dark);
+  color: var(--primary);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: color 0.2s;
   padding: 2px 4px;
   border-radius: 4px;
+  display: inline-block;
 }
 
 .terms-trigger-link:hover {
