@@ -93,7 +93,8 @@
         <label class="checkbox-container">
           <input type="checkbox" id="su_terms" name="terms" required />
           <span class="checkmark"></span>
-          <span class="terms-text">Saya menyetujui <a href="#">Syarat & Ketentuan</a> yang berlaku.</span>
+          <span class="terms-text">Saya menyetujui <a href="#" id="triggerTerms">Syarat & Ketentuan</a> yang
+            berlaku.</span>
         </label>
       </div>
 
@@ -170,6 +171,56 @@
           <button class="auth-btn auth-btn-secondary hidden" id="btnRetry">
             <span>Coba Lagi</span>
           </button>
+        </div>
+      </div>
+    </div>
+    <!-- Terms & Conditions Modal -->
+    <div class="auth-modal hidden" id="termsModal">
+      <div class="auth-modal-backdrop"></div>
+      <div class="auth-modal-content">
+        <div class="auth-modal-header">
+          <h3>Syarat & Ketentuan</h3>
+          <button class="close-modal-btn" id="closeTerms">×</button>
+        </div>
+        <div class="auth-modal-body">
+          <p>Dengan mendaftar dan/atau menggunakan website FoodEdu, Anda menyatakan telah membaca, memahami, dan
+            menyetujui seluruh syarat dan ketentuan berikut.</p>
+
+          <h4>1. Tentang FoodEdu</h4>
+          <p>FoodEdu adalah platform edukasi dan pengaduan terkait program Makanan Bergizi Gratis (MBG) yang menyediakan
+            informasi gizi, edukasi kelayakan makanan, serta wadah pengaduan dan saran bagi Siswa, Orang Tua/Wali, dan
+            Pihak Sekolah.</p>
+
+          <h4>2. Kewajiban Pengguna</h4>
+          <p>Pengguna wajib mengisi data secara benar, lengkap, dan dapat dipertanggungjawabkan, termasuk nama, nomor
+            identitas (NISN/NIP/ID), email, dan data lain yang diperlukan. Pengguna bertanggung jawab penuh atas
+            keamanan akun dan aktivitas yang dilakukan menggunakan akun tersebut.</p>
+
+          <h4>3. Privasi Data</h4>
+          <p>FoodEdu mengumpulkan dan menyimpan data pribadi pengguna untuk keperluan autentikasi, penyediaan layanan,
+            pengaduan, saran, serta evaluasi program MBG. Data pribadi bersifat rahasia dan dikelola secara aman,
+            termasuk penyimpanan kata sandi dalam bentuk terenkripsi. Data tidak akan dibagikan kepada pihak luar tanpa
+            persetujuan pengguna, kecuali diwajibkan oleh peraturan perundang-undangan.</p>
+
+          <h4>4. Larangan</h4>
+          <p>Pengguna dilarang memberikan data palsu, menyalahgunakan sistem, melakukan percobaan peretasan, atau
+            tindakan lain yang dapat merugikan sistem dan pengguna lain. FoodEdu berhak menonaktifkan akun atau
+            menghapus konten yang melanggar ketentuan ini.</p>
+
+          <h4>5. Disklaimer</h4>
+          <p>Informasi yang disediakan di FoodEdu bersifat edukatif dan informatif. FoodEdu tidak bertanggung jawab atas
+            keputusan atau tindakan yang diambil oleh pihak lain berdasarkan informasi yang tersedia di website ini.</p>
+
+          <h4>6. Perubahan Layanan</h4>
+          <p>FoodEdu berhak melakukan perubahan, pembaruan, atau penghentian layanan sewaktu-waktu guna peningkatan
+            kualitas dan keamanan sistem.</p>
+
+          <p class="terms-footer-note">Dengan mencentang kotak “Saya menyetujui Syarat dan Ketentuan”, pengguna
+            menyatakan setuju untuk mematuhi seluruh ketentuan yang berlaku dan memberikan persetujuan atas pengolahan
+            data pribadi sesuai dengan kebijakan yang telah ditetapkan.</p>
+        </div>
+        <div class="auth-modal-footer">
+          <button class="auth-btn auth-btn-primary" id="acceptTermsBtn">Saya Setuju</button>
         </div>
       </div>
     </div>

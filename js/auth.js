@@ -306,38 +306,14 @@
         }
 
         // Collect form data and transform field names to match backend expectations
-        const termsChecked = this.querySelector('[name="terms"]')?.checked || false;
-        
         const formDataObj = {
           name: this.querySelector('[name="su_name"]')?.value || '',
           email: this.querySelector('[name="su_email"]')?.value || '',
           phone: this.querySelector('[name="su_phone"]')?.value || '',
           role: this.querySelector('[name="role"]:checked')?.value || '',
           username: this.querySelector('[name="username"]')?.value || '',
-          password: this.querySelector('[name="password"]')?.value || '',
-          terms: termsChecked
+          password: this.querySelector('[name="password"]')?.value || ''
         };
-
-        // --- Client Side Validation Start ---
-        if (!termsChecked) {
-           showResult(false, 'Validasi Gagal', 'Anda wajib menyetujui Syarat & Ketentuan.', 'signup');
-           if (submitBtn) { submitBtn.classList.remove('loading'); submitBtn.disabled = false; }
-           return;
-        }
-
-        const phoneRegex = /^[0-9]{10,13}$/;
-        if (!phoneRegex.test(formDataObj.phone)) {
-           showResult(false, 'Validasi Gagal', 'Nomor HP harus berupa angka 10-13 digit.', 'signup');
-           if (submitBtn) { submitBtn.classList.remove('loading'); submitBtn.disabled = false; }
-           return;
-        }
-
-        if (formDataObj.password.length < 6) {
-           showResult(false, 'Validasi Gagal', 'Password minimal 6 karakter.', 'signup');
-           if (submitBtn) { submitBtn.classList.remove('loading'); submitBtn.disabled = false; }
-           return;
-        }
-        // --- Client Side Validation End ---
 
         // Add optional fields if they exist
         const sekolah = this.querySelector('[name="sekolah"]')?.value;
