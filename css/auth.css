@@ -1776,6 +1776,8 @@ button.loading::after {
     overflow: hidden;
     max-height: 0;
     opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 12px rgba(39, 174, 96, 0.15);
   }
@@ -1783,6 +1785,8 @@ button.loading::after {
   .terms-dropdown.show {
     max-height: 500px;
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     margin-bottom: 16px;
   }
 
