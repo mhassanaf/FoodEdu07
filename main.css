@@ -460,7 +460,7 @@ img {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 2px;
+    padding: 0;
     border-radius: 50px;
     background: transparent;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
@@ -500,10 +500,10 @@ img {
     background: linear-gradient(135deg, var(--accent) 0%, #ff8a00 100%);
     border: 2px solid transparent;
     color: white;
-    padding: 8px 20px;
+    padding: 8px 24px;
     border-radius: 50px;
-    font-weight: 600;
-    font-size: 13px;
+    font-weight: 500;
+    font-size: 14px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     font-family: "Poppins", sans-serif;
