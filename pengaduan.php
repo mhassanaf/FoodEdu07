@@ -170,7 +170,7 @@ if ($isMBG) {
                     </div>
                 </div>
                 <a href="pengaduan.php" class="nav-item pengaduan-link active">Pengaduan</a>
-                <a href="saran.php" class="nav-item saran-link"><?php echo $isMBG ? 'Data Saran' : 'Saran'; ?></a>
+                <a href="saran.php" class="nav-item saran-link"><?php echo $isMBG ? 'Saran' : 'Saran'; ?></a>
 
                 <!-- User Profile Buttons (Logged In) -->
                 <div class="nav-buttons">
