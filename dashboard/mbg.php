@@ -400,6 +400,7 @@ if ($user['role'] !== 'mbg') {
                 </div>
                 <a href="../pengaduan.php" class="nav-item">Pengaduan</a>
                 <a href="../saran.php" class="nav-item">Saran</a>
+                <a href="../mbg.php" class="nav-item">Dashboard</a>
                 <div class="nav-buttons">
                     <div class="user-profile">
                         <span class="username"
@@ -875,3 +876,4 @@ if ($user['role'] !== 'mbg') {
 </body>
 
 </html>
+
