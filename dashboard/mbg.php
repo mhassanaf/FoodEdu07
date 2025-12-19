@@ -17,7 +17,7 @@ if ($user['role'] !== 'mbg') {
     <title>Dashboard MBG - FoodEdu</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../main.css?v=2.0">
+    <link rel="stylesheet" href="../main.css?v=4.0">
     <style>
         /* =========================================
            MODERN DASHBOARD STYLES (REFINED)
