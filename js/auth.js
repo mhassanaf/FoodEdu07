@@ -350,6 +350,34 @@
         if (nip) formDataObj.nip = nip;
         if (idk) formDataObj.idk = idk;
 
+        // Role-specific validations
+        if (formDataObj.role === 'sekolah') {
+          const sekolahNip = formDataObj.nip || '';
+          const nipRegex = /^[0-9]{16}$/;
+          if (!nipRegex.test(sekolahNip)) {
+            showResult(false, 'Validasi Gagal', 'NIP sekolah harus berupa 16 angka.', 'signup');
+            if (submitBtn) { submitBtn.classList.remove('loading'); submitBtn.disabled = false; }
+            return;
+          }
+        } else if (formDataObj.role === 'mbg') {
+          const domisili = formDataObj.sekolah || '';
+          const idk = formDataObj.idk || '';
+          const domisiliRegex = /^[A-Za-z\s]+$/;
+          const idkRegex = /^[0-9]{12}$/;
+
+          if (!domisiliRegex.test(domisili)) {
+            showResult(false, 'Validasi Gagal', 'Domisili hanya boleh berisi huruf dan spasi.', 'signup');
+            if (submitBtn) { submitBtn.classList.remove('loading'); submitBtn.disabled = false; }
+            return;
+          }
+
+          if (!idkRegex.test(idk)) {
+            showResult(false, 'Validasi Gagal', 'ID Karyawan MBG harus 12 angka.', 'signup');
+            if (submitBtn) { submitBtn.classList.remove('loading'); submitBtn.disabled = false; }
+            return;
+          }
+        }
+
         fetch(ABS('auth/register.php'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
