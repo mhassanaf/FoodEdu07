@@ -135,9 +135,7 @@ if ($isMBG) {
                                                 <span>Saran Program MBG</span>
                                             </p>
                                         </div>
-                                        <div class="admin-review-status status-<?php echo htmlspecialchars($item['status']); ?>">
-                                            <?php echo ucfirst(htmlspecialchars($item['status'])); ?>
-                                        </div>
+                                      
                                     </header>
 
                                     <div class="admin-review-body">
@@ -347,4 +345,5 @@ if ($isMBG) {
     <?php endif; ?>
 </body>
 </html>
+
 
