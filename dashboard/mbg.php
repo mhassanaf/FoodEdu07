@@ -17,7 +17,7 @@ if ($user['role'] !== 'mbg') {
     <title>Dashboard MBG - FoodEdu</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="../main.css?v=1.1">
     <style>
         /* =========================================
            MODERN DASHBOARD STYLES (REFINED)
@@ -398,11 +398,12 @@ if ($user['role'] !== 'mbg') {
                         <a href="../gizi.html#kelayakan">Edukasi Kelayakan</a>
                     </div>
                 </div>
-                <a href="../pengaduan.php" class="nav-item pengaduan-link">Pengaduan</a>
-                <a href="../saran.php" class="nav-item saran-link">Saran</a>
+                <a href="../pengaduan.php" class="nav-item">Pengaduan</a>
+                <a href="../saran.php" class="nav-item">Saran</a>
                 <div class="nav-buttons">
                     <div class="user-profile">
-                        <span class="username" id="navUsername"><?php echo htmlspecialchars($user['name'] ?? 'User'); ?></span>
+                        <span class="username"
+                            id="navUsername"><?php echo htmlspecialchars($user['name'] ?? 'User'); ?></span>
                         <button class="btn-logout" id="logoutBtn">Keluar</button>
                     </div>
                 </div>
