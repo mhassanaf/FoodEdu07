@@ -1007,7 +1007,7 @@ async function checkUserSession() {
                 const logoutBtn = document.createElement('button');
                 logoutBtn.className = 'btn-login'; // Use same style as login btn
                 logoutBtn.textContent = 'Logout';
-                logoutBtn.style.backgroundColor = '#333';
+                logoutBtn.style.backgroundColor = '#ffffffff';
                 logoutBtn.onclick = async () => {
                     try {
                         await fetch(ABS('auth/logout.php'), { method: 'POST' });
