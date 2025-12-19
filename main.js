@@ -1039,6 +1039,7 @@ async function checkUserSession() {
                         case 'siswa': targetFile = 'siswa.php'; break;
                         case 'ortu':  targetFile = 'orangtua.php'; break; // Role 'ortu' ke file 'orangtua.php'
                         case 'sekolah': targetFile = 'sekolah.php'; break;
+                        case 'mbg': targetFile = 'mbg.php'; break;
                         default: return;
                     }
 
