@@ -1007,7 +1007,6 @@ async function checkUserSession() {
                 const logoutBtn = document.createElement('button');
                 logoutBtn.className = 'btn-login'; // Use same style as login btn
                 logoutBtn.textContent = 'Logout';
-                logoutBtn.style.backgroundColor = '#ffffffff';
                 logoutBtn.onclick = async () => {
                     try {
                         await fetch(ABS('auth/logout.php'), { method: 'POST' });
@@ -1015,7 +1014,7 @@ async function checkUserSession() {
                     } catch (e) { window.location.href = ABS('index.html'); }
                 };
 
-                // Add Profile Link (Unclickable but Animated)
+                // Add Profile Link (Clickable & Animated)
                 const profileBtn = document.createElement('button');
                 profileBtn.className = 'btn-signup'; // Use same style as signup btn
 
@@ -1024,13 +1023,29 @@ async function checkUserSession() {
                 profileBtn.textContent = displayName;
                 profileBtn.title = data.name; // Tooltip full name
 
-                // Style adjustments: default cursor since it's not clickable
-                profileBtn.style.cursor = 'default';
+                // Make it look clickable
+                profileBtn.style.cursor = 'pointer';
 
-                // Prevent click propagation to global listener
+                // Redirect to dashboard on click
                 profileBtn.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
+
+                    // Map roles to filenames
+                    let targetFile = '';
+                    switch (data.role) {
+                        case 'siswa': targetFile = 'siswa.php'; break;
+                        case 'ortu': targetFile = 'orangtua.php'; break;
+                        case 'sekolah': targetFile = 'sekolah.php'; break;
+                        case 'mbg': targetFile = 'mbg.php'; break;
+                        default: return;
+                    }
+
+                    // Handle pathing (root vs dashboard folder)
+                    const isAtDashboard = window.location.pathname.includes('/dashboard/');
+                    const pathPrefix = isAtDashboard ? '' : 'dashboard/';
+
+                    window.location.href = ABS(pathPrefix + targetFile);
                 });
 
                 container.appendChild(profileBtn);
