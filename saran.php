@@ -71,7 +71,7 @@ if ($isMBG) {
                             <a href="gizi.html#kelayakan">Edukasi Kelayakan Makanan</a>
                         </div>
                     </div>
-                <a href="pengaduan.php" class="nav-item pengaduan-link"><?php echo $isMBG ? 'Data Pengaduan' : 'Pengaduan'; ?></a>
+                <a href="pengaduan.php" class="nav-item pengaduan-link"><?php echo $isMBG ? 'Pengaduan' : 'Pengaduan'; ?></a>
                 <a href="saran.php" class="nav-item saran-link active">Saran</a>
 
                 <!-- User Profile Buttons (Logged In) -->
@@ -249,10 +249,8 @@ if ($isMBG) {
         <div class="footer-left">
             <h3>FOODEDU</h3>
             <p>
-                FoodEdu adalah sebuah platform berbasis web yang dirancang sebagai media edukasi 
-                dan pengumpulan umpan balik mengenai program Makanan Bergizi Gratis (MBG) dari pemerintah. 
-                Website ini berfungsi sebagai perantara antara siswa, orang tua, sekolah, dan pemerintah, 
-                sehingga seluruh pihak dapat saling terhubung dalam memantau kualitas makanan sekolah.
+                FoodEdu adalah platform berbasis web yang dirancang sebagai media edukasi
+                dan pengumpulan laporan terkait program makan bergizi di sekolah.
             </p>
         </div>
         <div class="footer-right">
