@@ -460,24 +460,28 @@ img {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 6px 12px;
+    padding: 2px;
     border-radius: 50px;
-    background: rgba(39, 174, 96, 0.08);
+    background: transparent;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .user-profile:hover {
-    background: rgba(39, 174, 96, 0.12);
-    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.15);
+    background: transparent;
+    box-shadow: none;
 }
 
 .user-profile .username {
     font-size: 14px;
     font-weight: 600;
-    color: var(--green);
+    color: #fff;
+    background: var(--accent);
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(255, 159, 28, 0.3);
     display: flex;
     align-items: center;
-    max-width: 100px;
+    max-width: 140px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -485,8 +489,9 @@ img {
 }
 
 .user-profile .username::before {
-    content: '👤';
-    margin-right: 6px;
+    /* content: '👤'; Removed icon for cleaner look matching the pill style, or keep it if desired but white */
+    content: '';
+    margin-right: 0;
     font-size: 16px;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -496,10 +501,10 @@ img {
 }
 
 .btn-logout {
-    padding: 6px 16px;
-    background: var(--green);
-    color: white;
-    border: none;
+    padding: 8px 20px;
+    background: #252525;
+    color: var(--green);
+    border: 2px solid #252525;
     border-radius: 50px;
     font-weight: 600;
     font-size: 12px;
@@ -527,7 +532,10 @@ img {
 
 .btn-logout:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(39, 174, 96, 0.35);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background: var(--green);
+    color: white;
+    border-color: var(--green);
 }
 
 .btn-logout:hover::before {
