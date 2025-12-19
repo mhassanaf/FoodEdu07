@@ -989,9 +989,9 @@ async function checkUserSession() {
                         const mbgLink = document.createElement('a');
                         mbgLink.href = ABS('dashboard/mbg.php');
                         mbgLink.className = 'nav-item nav-item-mbg';
-                        mbgLink.style.color = '#e74c3c'; // Distinguish color
+                        mbgLink.style.color = '#000000ff'; // Distinguish color
                         mbgLink.style.fontWeight = '600';
-                        mbgLink.textContent = 'Dashboard Gizi';
+                        mbgLink.textContent = 'Dashboard';
 
                         // Insert before buttons or at the end
                         const saranLink = navMenu.querySelector('.saran-link');
