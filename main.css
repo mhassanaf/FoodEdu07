@@ -474,11 +474,11 @@ img {
 .user-profile .username {
     font-size: 14px;
     font-weight: 500;
-    color: white;
-    background: linear-gradient(135deg, var(--accent) 0%, #ff8a00 100%);
-    box-shadow: 0 4px 15px rgba(255, 159, 28, 0.3);
-    padding: 8px 24px;
-    border-radius: 50px;
+    color: white !important;
+    background: linear-gradient(135deg, var(--accent) 0%, #ff8a00 100%) !important;
+    box-shadow: 0 4px 15px rgba(255, 159, 28, 0.3) !important;
+    padding: 8px 24px !important;
+    border-radius: 50px !important;
     display: flex;
     align-items: center;
     max-width: 200px;
@@ -521,11 +521,11 @@ img {
 }
 
 .btn-logout {
-    background: #fff;
-    border: 2px solid var(--green);
-    color: var(--green);
-    padding: 8px 24px;
-    border-radius: 50px;
+    background: #fff !important;
+    border: 2px solid var(--green) !important;
+    color: var(--green) !important;
+    padding: 8px 24px !important;
+    border-radius: 50px !important;
     font-weight: 500;
     font-size: 14px;
     cursor: pointer;
@@ -556,10 +556,10 @@ img {
 }
 
 .btn-logout:hover {
-    color: #fff;
+    color: #fff !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(39, 174, 96, 0.25);
-    border-color: var(--green);
+    box-shadow: 0 8px 20px rgba(39, 174, 96, 0.25) !important;
+    border-color: var(--green) !important;
 }
 
 .btn-logout:active {
