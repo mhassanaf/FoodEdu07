@@ -868,27 +868,22 @@ h1 {
 .terms-layout {
   display: flex;
   align-items: center;
-  flex-wrap: nowrap;
-  /* Prevent wrapping */
-  gap: 8px;
-  /* Consistent gap */
+  flex-wrap: nowrap; /* Mencegah wrapping yang berantakan */
+  gap: 8px; /* Jarak konsisten antar elemen */
   font-size: 14px;
   color: var(--neutral-600);
   justify-content: flex-start;
-  /* Ensure left alignment */
 }
 
 .checkbox-container-simple {
   display: inline-flex;
-  /* Fix for left alignment */
   align-items: center;
   position: relative;
   cursor: pointer;
   user-select: none;
-  padding-left: 28px;
+  padding-left: 28px; /* Ruang untuk kotak checkbox custom */
   margin-right: 2px;
   white-space: nowrap;
-  /* Prevent text wrap */
 }
 
 .checkbox-container-simple input {
@@ -903,7 +898,7 @@ h1 {
   position: absolute;
   left: 0;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%); /* Center vertikal absolut */
   height: 20px;
   width: 20px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -912,23 +907,26 @@ h1 {
   transition: all 0.2s ease;
 }
 
-.checkbox-container-simple:hover input~.checkmark-simple {
+/* Hover State */
+.checkbox-container-simple:hover input ~ .checkmark-simple {
   background-color: rgba(39, 174, 96, 0.1);
   border-color: var(--primary);
 }
 
-.checkbox-container-simple input:checked~.checkmark-simple {
+/* Checked State */
+.checkbox-container-simple input:checked ~ .checkmark-simple {
   background-color: var(--primary);
   border-color: var(--primary);
 }
 
+/* Checkmark Icon (L Shape) */
 .checkmark-simple:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-.checkbox-container-simple input:checked~.checkmark-simple:after {
+.checkbox-container-simple input:checked ~ .checkmark-simple:after {
   display: block;
 }
 
@@ -942,13 +940,11 @@ h1 {
   transform: rotate(45deg);
 }
 
-/* T&C - Unify Font Weights & Alignment */
+/* Text Alignment & Styling */
 .terms-label-text,
 .terms-suffix-text {
   color: var(--neutral-600);
-  /* Keep neutral color for readability */
   font-weight: 600;
-  /* Match bold style */
   display: inline-block;
   font-size: 14px;
 }
@@ -957,19 +953,14 @@ h1 {
   color: var(--primary);
   text-decoration: none;
   font-weight: 600;
-  /* Consistent weight */
   cursor: pointer;
   transition: color 0.2s;
   padding: 0 4px;
-  /* Remove vertical padding to fix alignment */
   border-radius: 4px;
   display: inline-block;
   position: relative;
-  top: -1px;
-  /* Slight visual nudge up to match Checkbox text baseline */
 }
 
-/* Ensure suffix is also aligned */
 .terms-suffix-text {
   position: relative;
   top: -1px;
@@ -1697,4 +1688,23 @@ button.loading::after {
   .subtitle {
     font-size: 14px;
   }
+}
+
+/* =========================================================
+    UTILITY CLASSES
+========================================================= */
+
+/* Pastikan elemen dengan class hidden benar-benar hilang */
+.hidden {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+/* Fix khusus agar tombol di dalam Result Card patuh */
+#resultCard .auth-btn.hidden,
+#resultCard .auth-btn-primary.hidden,
+#resultCard .auth-btn-secondary.hidden {
+  display: none !important;
 }
