@@ -17,7 +17,7 @@ if ($user['role'] !== 'siswa') {
     <title>Dashboard Siswa - FoodEdu</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../main.css?v=1.1">
+    <link rel="stylesheet" href="../main.css?v=1.2">
     <style>
         .panel {
             animation: fadeInUp 0.6s cubic-bezier(0.2, 0.0, 0.2, 1) backwards;
@@ -62,7 +62,7 @@ if ($user['role'] !== 'siswa') {
                     <div class="user-profile">
                         <span class="username"
                             id="navUsername"><?php echo htmlspecialchars($user['name'] ?? 'User'); ?></span>
-                        <button class="btn-logout" id="logoutBtn">Keluar</button>
+                        <button class="btn-logout" id="logoutBtn">Logout</button>
                     </div>
                 </div>
             </nav>
