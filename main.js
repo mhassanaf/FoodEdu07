@@ -989,8 +989,8 @@ async function checkUserSession() {
                         const mbgLink = document.createElement('a');
                         mbgLink.href = ABS('dashboard/mbg.php');
                         mbgLink.className = 'nav-item nav-item-mbg';
-                        mbgLink.style.color = '#000000ff'; // Distinguish color
-                        mbgLink.style.fontWeight = '600';
+                        mbgLink.style.color = '#333'; // Distinguish color
+                        mbgLink.style.fontWeight = '500';
                         mbgLink.textContent = 'Dashboard';
 
                         // Insert before buttons or at the end
