@@ -1016,41 +1016,21 @@ async function checkUserSession() {
                 };
 
                 // Add Profile Link (Unclickable but Animated)
-                // Add Profile Link (Clickable & Animated)
                 const profileBtn = document.createElement('button');
-                profileBtn.className = 'btn-signup'; // Menggunakan style yang sama
+                profileBtn.className = 'btn-signup'; // Use same style as signup btn
 
-                // Tampilkan nama (dipotong jika terlalu panjang)
+                // Show Full Name instead of 'Akun', truncate if too long
                 const displayName = data.name.length > 15 ? data.name.substring(0, 15) + '...' : data.name;
                 profileBtn.textContent = displayName;
-                profileBtn.title = data.name; // Tooltip nama lengkap
+                profileBtn.title = data.name; // Tooltip full name
 
-                // UBAH 1: Ubah cursor menjadi pointer agar terlihat bisa diklik
-                profileBtn.style.cursor = 'pointer';
+                // Style adjustments: default cursor since it's not clickable
+                profileBtn.style.cursor = 'default';
 
-                // UBAH 2: Tambahkan logika redirect saat diklik
+                // Prevent click propagation to global listener
                 profileBtn.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-
-                    // Tentukan file tujuan berdasarkan role
-                    let targetFile = '';
-                    switch (data.role) {
-                        case 'siswa': targetFile = 'siswa.php'; break;
-                        case 'ortu':  targetFile = 'orangtua.php'; break; // Role 'ortu' ke file 'orangtua.php'
-                        case 'sekolah': targetFile = 'sekolah.php'; break;
-                        case 'mbg': targetFile = 'mbg.php'; break;
-                        default: return;
-                    }
-
-                    // Tentukan path berdasarkan lokasi saat ini
-                    // Jika sedang di dalam folder dashboard, langsung ke file tujuan
-                    // Jika di root (index), tambahkan folder 'dashboard/'
-                    if (window.location.pathname.includes('/dashboard/')) {
-                        window.location.href = targetFile;
-                    } else {
-                        window.location.href = 'dashboard/' + targetFile;
-                    }
                 });
 
                 container.appendChild(profileBtn);
@@ -1058,16 +1038,24 @@ async function checkUserSession() {
             });
 
             // Update pengaduan links
-            const pengaduanLinks = document.querySelectorAll('a[href*="pengaduan"]:not([href="pengaduan.php"])');
-            pengaduanLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href && !href.includes('pengaduan.php') && !href.includes('#pengaduan')) {
-                    link.href = 'pengaduan.php';
-                    link.classList.add('pengaduan-link');
-                } else if (href && href.includes('#pengaduan')) {
-                    link.href = 'pengaduan.php';
+            const navItems = document.querySelectorAll('.nav-menu .nav-item, .nav-menu a');
+            navItems.forEach(link => {
+                const text = link.textContent.toLowerCase();
+                const href = link.getAttribute('href') || '';
+
+                if (text.includes('pengaduan') || href.includes('pengaduan.php')) {
                     link.classList.add('pengaduan-link');
                 }
+                if (text.includes('saran') || href.includes('saran.php')) {
+                    link.classList.add('saran-link');
+                }
+            });
+
+            // Update other links (legacy logic)
+            const pengaduanLinks = document.querySelectorAll('a[href*="pengaduan"]:not([href="pengaduan.php"]):not(.pengaduan-link)');
+            pengaduanLinks.forEach(link => {
+                link.href = 'pengaduan.php';
+                link.classList.add('pengaduan-link');
             });
 
             // Update saran links
