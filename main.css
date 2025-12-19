@@ -476,7 +476,6 @@ img {
     font-weight: 500;
     color: white !important;
     background: linear-gradient(135deg, var(--accent) 0%, #ff8a00 100%) !important;
-    box-shadow: 0 4px 15px rgba(255, 159, 28, 0.3) !important;
     padding: 8px 24px !important;
     border-radius: 50px !important;
     display: flex;
