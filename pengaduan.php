@@ -233,9 +233,6 @@ if ($isMBG) {
                                                 <span><?php echo htmlspecialchars($item['nama_sekolah']); ?></span>
                                             </p>
                                         </div>
-                                        <div class="admin-review-status status-<?php echo htmlspecialchars($item['status']); ?>">
-                                            <?php echo ucfirst(htmlspecialchars($item['status'])); ?>
-                                        </div>
                                     </header>
 
                                     <div class="admin-review-body">
@@ -552,3 +549,4 @@ if ($isMBG) {
 </body>
 
 </html>
+
