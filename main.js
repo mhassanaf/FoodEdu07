@@ -49,6 +49,67 @@ function initResponsiveNavbar() {
             }
         });
 
+        // =========================================================
+        // RE-ATTACH EVENT LISTENERS FOR CLONED MOBILE BUTTONS
+        // =========================================================
+        const mobileLogoutBtn = mobileMenu.querySelector('.btn-logout');
+        const mobileUsernameBtn = mobileMenu.querySelector('.username');
+
+        // 1. Mobile Logout Logic
+        if (mobileLogoutBtn) {
+            mobileLogoutBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Add loading state
+                const originalText = mobileLogoutBtn.textContent;
+                mobileLogoutBtn.textContent = 'Keluar...';
+                mobileLogoutBtn.style.opacity = '0.7';
+
+                try {
+                    const ABS = (p) => (p.startsWith('http') ? p : (window.location.origin + window.location.pathname.split('/').slice(0, -2).join('/') + '/' + p).replace(/([^:]\/)\/+/g, "$1"));
+                    // Simple relative path fallback if ABS fails or is complex
+                    const logoutPath = window.location.pathname.includes('/dashboard/') ? '../auth/logout.php' : 'auth/logout.php';
+
+                    await fetch(logoutPath, { method: 'POST' });
+                    window.location.reload(); // Reload to trigger session check redirect
+                } catch (err) {
+                    console.error('Logout failed', err);
+                    window.location.href = 'index.html';
+                }
+            });
+        }
+
+        // 2. Mobile Username Logic (Redirect to Dashboard)
+        if (mobileUsernameBtn) {
+            mobileUsernameBtn.style.cursor = 'pointer';
+            mobileUsernameBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Determine dashboard URL based on current location
+                // If we are already in dashboard folder, just reload or go to specific file if needed
+                if (window.location.pathname.includes('/dashboard/')) {
+                    window.location.reload();
+                } else {
+                    // We need to know which dashboard to go to. 
+                    // Since specific dashboard URL depends on role, and we might not have it easily here without API,
+                    // safe bet is to let the backend helper or just reload if check_session handles redirection.
+                    // However, check_session usually returns JSON. 
+                    // Best approach: Use the existing logic or simple redirection if we can guess.
+                    // Actually, the user is already logged in, so clicking username usually does nothing or goes to profile.
+                    // User requested: "kalo username dipencet dia ke laman dashboard lgi"
+                    // If we are on dashboard, reload. If outside, go to dashboard.
+                    // Since we don't know the ROLE easily here without parsing the page or API, check the link of the "Dashboard" nav item if it exists.
+                    const dashLink = mobileMenu.querySelector('a[href*="dashboard"]');
+                    if (dashLink) {
+                        window.location.href = dashLink.getAttribute('href');
+                    } else {
+                        // Fallback: reload page, if they are logged in, they stay logged in.
+                        window.location.reload();
+                    }
+                }
+            });
+        }
+
         // Create mobile overlay
         const overlay = document.createElement('div');
         overlay.className = 'mobile-overlay';
@@ -61,7 +122,7 @@ function initResponsiveNavbar() {
 
         if (hamburger && mobileNav) {
             // Add stagger animation styles
-            const mobileMenuItems = mobileNav.querySelectorAll('a, .dropdown-toggle');
+            const mobileMenuItems = mobileNav.querySelectorAll('a, .dropdown-toggle, .user-profile');
             mobileMenuItems.forEach((item, index) => {
                 item.style.opacity = '0';
                 item.style.transform = 'translateX(-20px)';
