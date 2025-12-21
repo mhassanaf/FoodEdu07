@@ -864,11 +864,11 @@ img {
         display: none !important;
     }
 
-    .nav-buttons {
+    .nav-menu .nav-buttons {
         display: none !important;
     }
 
-    .user-profile {
+    .nav-menu .user-profile {
         display: none !important;
     }
 }
