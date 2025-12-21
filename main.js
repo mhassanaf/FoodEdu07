@@ -122,7 +122,7 @@ function initResponsiveNavbar() {
 
         if (hamburger && mobileNav) {
             // Add stagger animation styles
-            const mobileMenuItems = mobileNav.querySelectorAll('a, .dropdown-toggle, .user-profile');
+            const mobileMenuItems = mobileNav.querySelectorAll('a, .dropdown-toggle, .user-profile .username, .user-profile .btn-logout');
             mobileMenuItems.forEach((item, index) => {
                 item.style.opacity = '0';
                 item.style.transform = 'translateX(-20px)';
