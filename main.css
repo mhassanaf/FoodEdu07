@@ -850,6 +850,19 @@ img {
     font-size: 12px;
 }
 
+/* CRITICAL: Force display of user profile elements in mobile menu */
+.nav-menu-mobile .user-profile {
+    display: flex !important;
+}
+
+.nav-menu-mobile .user-profile .username {
+    display: flex !important;
+}
+
+.nav-menu-mobile .user-profile .btn-logout {
+    display: block !important;
+}
+
 /* Nav Menu Desktop - Hide on Mobile */
 @media (max-width: 900px) {
     .hamburger {
