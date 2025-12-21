@@ -864,7 +864,8 @@ img {
     font-weight: 600 !important;
     border-radius: 12px !important;
     cursor: pointer !important;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    /* Remove global transition conflict - use specific hover transition instead */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
 }
 
 /* Nav Menu Desktop - Hide on Mobile */
